@@ -447,15 +447,15 @@ class GaugeView extends ChartView {
                         const previousPointer = oldData.getItemGraphicEl(oldIdx) as PointerPath;
                         const previousRotate = previousPointer ? previousPointer.rotation : startAngle;
                         const pointer = createPointer(newIdx, previousRotate);
-                            pointer.rotation = previousRotate;
-                            graphic.updateProps(pointer, {
-                                rotation: -(
-                                    linearMap(data.get(valueDim, newIdx) as number, valueExtent, angleExtent, true)
-                                        + Math.PI / 2
-                                )
-                            }, seriesModel);
-                            group.add(pointer);
-                            data.setItemGraphicEl(newIdx, pointer);
+                        pointer.rotation = previousRotate;
+                        graphic.updateProps(pointer, {
+                            rotation: -(
+                                linearMap(data.get(valueDim, newIdx) as number, valueExtent, angleExtent, true)
+                                    + Math.PI / 2
+                            )
+                        }, seriesModel);
+                        group.add(pointer);
+                        data.setItemGraphicEl(newIdx, pointer);
                     }
 
                     if (showProgress) {
@@ -623,6 +623,7 @@ class GaugeView extends ChartView {
                 const labelEl = newDetailEls[idx];
                 const formatter = itemDetailModel.get('formatter');
                 labelEl.attr({
+                    z2: 10,
                     style: createTextStyle(itemDetailModel, {
                         x: detailX,
                         y: detailY,

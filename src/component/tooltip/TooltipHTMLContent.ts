@@ -100,7 +100,7 @@ function assembleTransition(duration: number, onlyFade?: boolean): string {
     if (!onlyFade) {
         transitionOption = ` ${duration}s ${transitionCurve}`;
         transitionText += env.transformSupported
-            ? `,${TRANSFORM_VENDOR}${transitionOption}`
+            ? `,${CSS_TRANSFORM_VENDOR}${transitionOption}`
             : `,left${transitionOption},top${transitionOption}`;
     }
 
@@ -388,7 +388,7 @@ class TooltipHTMLContent {
                 // stop, "unfocusAdjacency". Here `pointer-events: none` is used to solve
                 // it. Although it is not supported by IE8~IE10, fortunately it is a rare
                 // scenario.
-                + `;pointer-event:${this._enterable ? 'auto' : 'none'}`;
+                + `;pointer-events:${this._enterable ? 'auto' : 'none'}`;
         }
 
         this._show = true;
